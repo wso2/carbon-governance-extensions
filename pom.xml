@@ -493,7 +493,7 @@
             <dependency>
                 <groupId>org.wso2.carbon.governance-extensions</groupId>
                 <artifactId>org.wso2.carbon.governance.platform.extensions</artifactId>
-                <version>${project.version}</version>
+                <version>${carbon.governance.ext.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.wso2.carbon.registry</groupId>
@@ -649,90 +649,10 @@
             </dependency>
             <dependency>
                 <groupId>org.wso2.carbon</groupId>
-                <artifactId>org.wso2.carbon.governance.generic</artifactId>
-                <version>${carbon.governance.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wso2.carbon</groupId>
-                <artifactId>org.wso2.carbon.governance.generic.ui</artifactId>
-                <version>${carbon.governance.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wso2.carbon</groupId>
-                <artifactId>org.wso2.carbon.governance.registry.extensions</artifactId>
-                <version>${carbon.governance.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wso2.carbon</groupId>
-                <artifactId>org.wso2.carbon.governance.services.ui</artifactId>
-                <version>${carbon.governance.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wso2.carbon</groupId>
-                <artifactId>org.wso2.carbon.governance.services</artifactId>
-                <version>${carbon.governance.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wso2.carbon</groupId>
-                <artifactId>org.wso2.carbon.governance.wsdltool</artifactId>
-                <version>${carbon.governance.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wso2.carbon</groupId>
-                <artifactId>org.wso2.carbon.governance.wsdltool.ui</artifactId>
-                <version>${carbon.governance.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.wso2.carbon</groupId>
-                <artifactId>org.wso2.carbon.mashup.utils</artifactId>
-                <version>${mashup.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wso2.carbon</groupId>
-                <artifactId>org.wso2.carbon.mashup.javascript.hostobjects.registry</artifactId>
-                <version>${mashup.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wso2.carbon.commons</groupId>
-                <artifactId>org.wso2.carbon.user.mgt.stub</artifactId>
-                <version>${carbon.commons.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wso2.carbon.commons</groupId>
-                <artifactId>org.wso2.carbon.user.mgt</artifactId>
-                <version>${carbon.commons.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wso2.carbon.commons</groupId>
-                <artifactId>org.wso2.carbon.user.mgt.ui</artifactId>
-                <version>${carbon.commons.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wso2.carbon.commons</groupId>
-                <artifactId>org.wso2.carbon.discovery.core</artifactId>
-                <version>${carbon.commons.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wso2.carbon.businessprocess</groupId>
-                <artifactId>org.wso2.carbon.humantask.stub</artifactId>
-                <version>${carbon.business.process.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wso2.carbon</groupId>
                 <artifactId>org.wso2.carbon.mediation.configadmin.stub</artifactId>
                 <version>4.2.0</version>
             </dependency>
-            <dependency>
-                <groupId>org.wso2.carbon</groupId>
-                <artifactId>org.wso2.carbon.governance.custom.lifecycles.history.ui</artifactId>
-                <version>${carbon.governance.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wso2.carbon.commons</groupId>
-                <artifactId>org.wso2.carbon.ntask.solutions</artifactId>
-                <version>${carbon.commons.version}</version>
-            </dependency>
+
             <dependency>
                 <groupId>org.wso2.carbon</groupId>
                 <artifactId>org.wso2.carbon.discovery.proxy</artifactId>
@@ -1043,16 +963,8 @@
         <carbon.kernel.registry.imp.pkg.version>[1.0.1, 2.0.0)</carbon.kernel.registry.imp.pkg.version>
 
         <!-- Carbon Commons -->
-        <carbon.commons.version>4.3.0</carbon.commons.version>
+        <carbon.commons.version>4.3.1</carbon.commons.version>
         <carbon.commons.imp.pkg.version>[4.3.0, 4.4.0)</carbon.commons.imp.pkg.version>
-
-        <!-- Carbon Identity -->
-        <carbon.identity.version>4.3.0</carbon.identity.version>
-        <carbon.identity.imp.pkg.version>[4.3.0, 4.4.0)</carbon.identity.imp.pkg.version>
-
-        <!-- Carbon Business Process -->
-        <carbon.business.process.version>4.3.0</carbon.business.process.version>
-        <carbon.business.process.imp.pkg.version>[4.3.0, 4.4.0)</carbon.business.process.imp.pkg.version>
 
         <!-- Carbon Registry -->
         <carbon.registry.version>4.3.0</carbon.registry.version>
@@ -1071,7 +983,7 @@
         <!-- Axis2 Version -->
         <axis2.version>1.6.1-wso2v11</axis2.version>
         <orbit.version.axis2>1.6.1.wso2v11</orbit.version.axis2>
-        <axis2-transports.version>1.1.0-wso2v10-SNAPSHOT</axis2-transports.version>
+        <axis2-transports.version>1.1.0-wso2v10</axis2-transports.version>
         <axis2.osgi.version.range>[1.6.1.wso2v11, 1.7.0)</axis2.osgi.version.range>
         <orbit.version.wsdl4j>1.6.2.wso2v4</orbit.version.wsdl4j>
         <orbit.version.neethi>2.0.4.wso2v4</orbit.version.neethi>
@@ -1121,7 +1033,6 @@
         <wsdl.validator.version>1.2.0.wso2v1</wsdl.validator.version>
         <rhino.version>1.7.0.R4.wso2v1</rhino.version>
         <mashup.version>4.2.0</mashup.version>
-        <event.version>${project.version}</event.version>
         <google.guava.wso2.version>12.0.0.wso2v1</google.guava.wso2.version>
         <carbon.p2.plugin.version>1.5.3</carbon.p2.plugin.version>
         <version.solr>1.4.1.wso2v1</version.solr>
