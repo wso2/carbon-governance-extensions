@@ -650,7 +650,7 @@
             <dependency>
                 <groupId>org.wso2.carbon</groupId>
                 <artifactId>org.wso2.carbon.mediation.configadmin.stub</artifactId>
-                <version>4.2.0</version>
+                <version>${carbon.mediation.version}</version>
             </dependency>
 
             <dependency>
@@ -973,6 +973,8 @@
         <!-- Carbon platform version comes here-->
         <carbon.governance.version>4.3.0-SNAPSHOT</carbon.governance.version>
         <carbon.governance.imp.pkg.version>[4.3.0-SNAPSHOT, 4.4.0)</carbon.governance.imp.pkg.version>
+
+        <carbon.mediation.version>4.3.0-SNAPSHOT</carbon.mediation.version>
 
         <carbon.governance.ext.version>4.3.0-SNAPSHOT</carbon.governance.ext.version>
         <carbon.governance.ext.imp.pkg.version>[4.3.0-SNAPSHOT, 4.4.0)</carbon.governance.ext.imp.pkg.version>
