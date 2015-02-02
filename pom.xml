@@ -100,7 +100,7 @@
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
                     <preparationGoals>clean install</preparationGoals>
-                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <autoVersionSubmodules>false</autoVersionSubmodules>
                 </configuration>
             </plugin>
             <plugin>
@@ -185,15 +185,10 @@
 
     <distributionManagement>
         <repository>
-            <id>wso2.releases</id>
-            <name>WSO2 internal Repository</name>
-            <url>http://maven.wso2.org/nexus/content/repositories/releases/</url>
+            <id>nexus-releases</id>
+            <name>WSO2 Release Distribution Repository</name>
+            <url>http://maven.wso2.org/nexus/service/local/staging/deploy/maven2/</url>
         </repository>
-        <snapshotRepository>
-            <id>wso2.snapshots</id>
-            <name>Apache Snapshot Repository</name>
-            <url>http://maven.wso2.org/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
     </distributionManagement>
 
     <dependencyManagement>
@@ -719,12 +714,12 @@
 
             <!-- Governance dependencies -->
             <dependency>
-                <groupId>org.wso2.carbon</groupId>
+                <groupId>org.wso2.carbon.governance</groupId>
                 <artifactId>org.wso2.carbon.governance.api</artifactId>
                 <version>${carbon.governance.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.wso2.carbon</groupId>
+                <groupId>org.wso2.carbon.mediation</groupId>
                 <artifactId>org.wso2.carbon.mediation.configadmin.stub</artifactId>
                 <version>${carbon.mediation.version}</version>
             </dependency>
@@ -1047,13 +1042,13 @@
         <carbon.registry.imp.pkg.version>[4.3.0, 4.4.0)</carbon.registry.imp.pkg.version>
 
         <!-- Carbon platform version comes here-->
-        <carbon.governance.version>4.3.0-SNAPSHOT</carbon.governance.version>
-        <carbon.governance.imp.pkg.version>[4.3.0-SNAPSHOT, 4.4.0)</carbon.governance.imp.pkg.version>
+        <carbon.governance.version>4.3.0</carbon.governance.version>
+        <carbon.governance.imp.pkg.version>[4.3.0, 4.4.0)</carbon.governance.imp.pkg.version>
 
-        <carbon.mediation.version>4.3.0-SNAPSHOT</carbon.mediation.version>
+        <carbon.mediation.version>4.3.0</carbon.mediation.version>
 
         <carbon.governance.ext.version>4.3.0-SNAPSHOT</carbon.governance.ext.version>
-        <carbon.governance.ext.imp.pkg.version>[4.3.0-SNAPSHOT, 4.4.0)</carbon.governance.ext.imp.pkg.version>
+        <carbon.governance.ext.imp.pkg.version>[4.3.0, 4.4.0)</carbon.governance.ext.imp.pkg.version>
 
         <!-- Carbon P2 plugin Version -->
         <carbon.p2.plugin.version>1.5.4</carbon.p2.plugin.version>
