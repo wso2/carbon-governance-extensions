@@ -1037,7 +1037,7 @@
         <carbon.commons.imp.pkg.version>[4.3.0, 4.4.0)</carbon.commons.imp.pkg.version>
 
         <!-- Carbon Registry -->
-        <carbon.registry.version>4.3.2-SNAPSHOT</carbon.registry.version>
+        <carbon.registry.version>4.3.2</carbon.registry.version>
         <carbon.registry.imp.pkg.version>[4.3.0, 4.4.0)</carbon.registry.imp.pkg.version>
 
         <!-- Carbon platform version comes here-->
