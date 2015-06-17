@@ -24,6 +24,7 @@
     <modules>
         <module>components/governance-extensions</module>
         <module>features/platform-extensions</module>
+        <module>features/governance-comparator</module>
     </modules>
     <build>
         <pluginManagement>
@@ -715,6 +716,11 @@
             <dependency>
                 <groupId>org.wso2.carbon.governance</groupId>
                 <artifactId>org.wso2.carbon.governance.api</artifactId>
+                <version>${carbon.governance.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.governance</groupId>
+                <artifactId>org.wso2.carbon.governance.comparator</artifactId>
                 <version>${carbon.governance.version}</version>
             </dependency>
             <dependency>
