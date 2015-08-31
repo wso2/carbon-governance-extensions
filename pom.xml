@@ -1052,7 +1052,7 @@
 
         <carbon.mediation.version>4.4.0</carbon.mediation.version>
 
-        <carbon.governance.ext.version>4.4.2-SNAPSHOT</carbon.governance.ext.version>
+        <carbon.governance.ext.version>4.4.2</carbon.governance.ext.version>
         <carbon.governance.ext.imp.pkg.version>[4.4.0, 4.5.0)</carbon.governance.ext.imp.pkg.version>
 
         <!-- Carbon P2 plugin Version -->
