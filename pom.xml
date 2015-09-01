@@ -10,7 +10,7 @@
     <groupId>org.wso2.carbon.governance-extensions</groupId>
     <artifactId>carbon-governance-extensions</artifactId>
     <packaging>pom</packaging>
-    <version>4.4.4-SNAPSHOT</version>
+    <version>4.4.5-SNAPSHOT</version>
     <name>WSO2 Carbon - Platform Aggregator Pom</name>
     <url>http://wso2.org</url>
 
@@ -1047,12 +1047,12 @@
         <carbon.registry.imp.pkg.version>[4.4.0, 4.5.0)</carbon.registry.imp.pkg.version>
 
         <!-- Carbon Governance version comes here-->
-        <carbon.governance.version>4.5.5</carbon.governance.version>
+        <carbon.governance.version>4.5.6</carbon.governance.version>
         <carbon.governance.imp.pkg.version>[4.5.0, 4.6.0)</carbon.governance.imp.pkg.version>
 
         <carbon.mediation.version>4.4.0</carbon.mediation.version>
 
-        <carbon.governance.ext.version>4.4.4-SNAPSHOT</carbon.governance.ext.version>
+        <carbon.governance.ext.version>4.4.5-SNAPSHOT</carbon.governance.ext.version>
         <carbon.governance.ext.imp.pkg.version>[4.4.0, 4.5.0)</carbon.governance.ext.imp.pkg.version>
 
         <!-- Carbon P2 plugin Version -->
