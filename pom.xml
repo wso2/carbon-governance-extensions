@@ -10,7 +10,7 @@
     <groupId>org.wso2.carbon.governance-extensions</groupId>
     <artifactId>carbon-governance-extensions</artifactId>
     <packaging>pom</packaging>
-    <version>4.4.6</version>
+    <version>4.4.7-SNAPSHOT</version>
     <name>WSO2 Carbon - Platform Aggregator Pom</name>
     <url>http://wso2.org</url>
 
@@ -18,7 +18,7 @@
         <connection>scm:git:https://github.com/wso2/carbon-governance-extensions.git</connection>
         <developerConnection>scm:git:https://github.com/wso2/carbon-governance-extensions.git</developerConnection>
         <url>https://github.com/wso2/carbon-governance-extensions.git</url>
-        <tag>v4.4.6</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <modules>
@@ -1052,7 +1052,7 @@
 
         <carbon.mediation.version>4.4.0</carbon.mediation.version>
 
-        <carbon.governance.ext.version>4.4.6</carbon.governance.ext.version>
+        <carbon.governance.ext.version>4.4.7-SNAPSHOT</carbon.governance.ext.version>
         <carbon.governance.ext.imp.pkg.version>[4.4.0, 4.5.0)</carbon.governance.ext.imp.pkg.version>
 
         <!-- Carbon P2 plugin Version -->
