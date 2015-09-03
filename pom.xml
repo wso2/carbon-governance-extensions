@@ -1065,7 +1065,7 @@
         <axis2.osgi.version.range>[1.6.1.wso2v12, 1.7.0)</axis2.osgi.version.range>
         <orbit.version.wsdl4j>1.6.2.wso2v4</orbit.version.wsdl4j>
         <orbit.version.neethi>2.0.4.wso2v4</orbit.version.neethi>
-        <rampart.wso2.version>1.6.1.wso2v13</rampart.wso2.version>
+        <rampart.wso2.version>1.6.1.wso2v16</rampart.wso2.version>
 
         <!-- Apache Axiom -->
         <axiom.version>1.2.11-wso2v6</axiom.version>
