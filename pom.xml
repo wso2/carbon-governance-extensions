@@ -10,7 +10,7 @@
     <groupId>org.wso2.carbon.governance-extensions</groupId>
     <artifactId>carbon-governance-extensions</artifactId>
     <packaging>pom</packaging>
-    <version>4.4.6-SNAPSHOT</version>
+    <version>4.4.7-SNAPSHOT</version>
     <name>WSO2 Carbon - Platform Aggregator Pom</name>
     <url>http://wso2.org</url>
 
@@ -1039,20 +1039,20 @@
         <carbon.kernel.registry.imp.pkg.version>[1.0.1, 2.0.0)</carbon.kernel.registry.imp.pkg.version>
 
         <!-- Carbon Commons -->
-        <carbon.commons.version>4.4.4</carbon.commons.version>
+        <carbon.commons.version>4.4.6</carbon.commons.version>
         <carbon.commons.imp.pkg.version>[4.4.0, 4.5.0)</carbon.commons.imp.pkg.version>
 
         <!-- Carbon Registry -->
-        <carbon.registry.version>4.4.7</carbon.registry.version>
+        <carbon.registry.version>4.4.8</carbon.registry.version>
         <carbon.registry.imp.pkg.version>[4.4.0, 4.5.0)</carbon.registry.imp.pkg.version>
 
         <!-- Carbon Governance version comes here-->
-        <carbon.governance.version>4.5.7</carbon.governance.version>
+        <carbon.governance.version>4.5.8</carbon.governance.version>
         <carbon.governance.imp.pkg.version>[4.5.0, 4.6.0)</carbon.governance.imp.pkg.version>
 
         <carbon.mediation.version>4.4.0</carbon.mediation.version>
 
-        <carbon.governance.ext.version>4.4.6-SNAPSHOT</carbon.governance.ext.version>
+        <carbon.governance.ext.version>4.4.7-SNAPSHOT</carbon.governance.ext.version>
         <carbon.governance.ext.imp.pkg.version>[4.4.0, 4.5.0)</carbon.governance.ext.imp.pkg.version>
 
         <!-- Carbon P2 plugin Version -->
@@ -1065,7 +1065,7 @@
         <axis2.osgi.version.range>[1.6.1.wso2v12, 1.7.0)</axis2.osgi.version.range>
         <orbit.version.wsdl4j>1.6.2.wso2v4</orbit.version.wsdl4j>
         <orbit.version.neethi>2.0.4.wso2v4</orbit.version.neethi>
-        <rampart.wso2.version>1.6.1.wso2v13</rampart.wso2.version>
+        <rampart.wso2.version>1.6.1.wso2v16</rampart.wso2.version>
 
         <!-- Apache Axiom -->
         <axiom.version>1.2.11-wso2v6</axiom.version>
