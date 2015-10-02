@@ -1057,11 +1057,11 @@
         <carbon.commons.imp.pkg.version>[4.4.0, 4.5.0)</carbon.commons.imp.pkg.version>
 
         <!-- Carbon Registry -->
-        <carbon.registry.version>4.4.8</carbon.registry.version>
+        <carbon.registry.version>4.4.9</carbon.registry.version>
         <carbon.registry.imp.pkg.version>[4.4.0, 4.5.0)</carbon.registry.imp.pkg.version>
 
         <!-- Carbon Governance version comes here-->
-        <carbon.governance.version>4.5.8</carbon.governance.version>
+        <carbon.governance.version>4.5.9</carbon.governance.version>
         <carbon.governance.imp.pkg.version>[4.5.0, 4.6.0)</carbon.governance.imp.pkg.version>
 
         <carbon.mediation.version>4.4.0</carbon.mediation.version>
