@@ -62,7 +62,7 @@
                                 <bundleDef>org.wso2.carbon.governance-extensions:org.wso2.carbon.governance.platform.extensions</bundleDef>
                             </bundles>
                             <importFeatures>
-                                <importFeatureDef>org.wso2.carbon.registry.core.server</importFeatureDef>
+                                <importFeatureDef>org.wso2.carbon.registry.core.server:${carbon.registry.version}</importFeatureDef>
                             </importFeatures>
                         </configuration>
                     </execution>
