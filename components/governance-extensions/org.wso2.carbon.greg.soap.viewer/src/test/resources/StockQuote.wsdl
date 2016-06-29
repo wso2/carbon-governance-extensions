@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.webserviceX.NET/"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.webserviceX.NET/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+    <wsdl:types>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET/">
+            <!-- Test element-->
+            <s:element name="GetQuote">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="symbol" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetQuoteResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="GetQuoteResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="string" nillable="true" type="s:string"/>
+
+            <s:element name="age">
+                <s:simpleType>
+                    <s:restriction base="s:integer">
+                        <s:minInclusive value="0"/>
+                        <s:maxInclusive value="100"/>
+                    </s:restriction>
+                </s:simpleType>
+            </s:element>
+
+            <!-- End -->
+
+            <!-- For sequence test case -->
+
+            <s:element name="pets1">
+                <s:complexType>
+                    <s:sequence minOccurs="0" maxOccurs="unbounded">
+                        <s:choice>
+                            <s:element name="dog" type="s:string"/>
+                            <s:element name="cat" type="s:string"/>
+                        </s:choice>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+
+            <s:element name="pets2">
+                <s:complexType>
+                    <s:sequence minOccurs="0" maxOccurs="unbounded">
+                        <s:sequence>
+                            <s:element name="dog" type="s:string"/>
+                            <s:element name="cat" type="s:string"/>
+                        </s:sequence>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+
+            <s:element name="pets3">
+                <s:complexType>
+                    <s:sequence minOccurs="0" maxOccurs="unbounded">
+                        <s:group ref="groupChoice1"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+
+            <!-- End-->
+            <!-- -->
+            <!-- For Union test case -->
+            <s:element name="jeans_size">
+                <s:simpleType>
+                    <s:union memberTypes="sizebyno sizebystring"/>
+                </s:simpleType>
+            </s:element>
+
+            <s:simpleType name="sizebyno">
+                <s:restriction base="s:positiveInteger">
+                    <s:maxInclusive value="42"/>
+                </s:restriction>
+            </s:simpleType>
+
+            <s:simpleType name="sizebystring">
+                <s:restriction base="s:string">
+                    <s:enumeration value="small"/>
+                    <s:enumeration value="medium"/>
+                    <s:enumeration value="large"/>
+                </s:restriction>
+            </s:simpleType>
+            <!-- End of union test case -->
+            <!-- For Attribute test case -->
+            <s:attribute name="code">
+                <s:simpleType>
+                    <s:restriction base="s:string">
+                        <s:pattern value="[A-Z][A-Z]"/>
+                    </s:restriction>
+                </s:simpleType>
+            </s:attribute>
+
+            <s:complexType name="someComplexType">
+                <s:attribute ref="code"/>
+            </s:complexType>
+
+            <!-- End of Attribute test case -->
+
+            <!-- AttributeGroup -->
+            <s:attributeGroup name="personattr">
+                <s:attribute name="attr1" type="string"/>
+                <s:attribute name="attr2" type="integer"/>
+            </s:attributeGroup>
+
+            <s:attributeGroup name="personInfo">
+                <s:attributeGroup ref="personattr"/>
+                <s:attribute name="attr1" type="string"/>
+                <s:attribute name="attr2" type="integer"/>
+            </s:attributeGroup>
+
+            <s:complexType name="person">
+                <s:attributeGroup ref="personattr"/>
+            </s:complexType>
+            <!-- end AttributeGroup -->
+
+            <!-- To test list -->
+            <s:simpleType name="valuelist">
+                <s:list itemType="s:integer"/>
+            </s:simpleType>
+            <!-- End of list test -->
+
+            <!-- To test group test case -->
+
+            <s:group name="groupChoice1">
+                <s:choice>
+                    <s:sequence>
+                        <s:element name="customer" type="s:string"/>
+                        <s:element name="orderdetails" type="s:string"/>
+                        <s:element name="billto" type="s:string"/>
+                        <s:element name="shipto" type="s:string"/>
+                    </s:sequence>
+                </s:choice>
+            </s:group>
+
+            <s:group name="groupAll">
+                <s:all>
+                    <s:element name="customer" type="s:string"/>
+                    <s:element name="orderdetails" type="s:string"/>
+                    <s:element name="billto" type="s:string"/>
+                    <s:element name="shipto" type="s:string"/>
+                </s:all>
+            </s:group>
+
+            <s:group name="groupChoice2">
+                <s:choice>
+                    <s:group ref="custGroup"/>
+
+                </s:choice>
+            </s:group>
+
+            <s:group name="custGroup">
+                <s:sequence>
+                    <s:element name="customer" type="s:string"/>
+                    <s:element name="orderdetails" type="s:string"/>
+                    <s:element name="billto" type="s:string"/>
+                    <s:element name="shipto" type="s:string"/>
+                </s:sequence>
+            </s:group>
+
+            <s:element name="order" type="ordertype"/>
+
+            <s:complexType name="ordertype">
+                <s:group ref="custGroup"/>
+                <s:attribute name="status" type="s:string"/>
+            </s:complexType>
+            <!-- End of group test case-->
+
+            <!-- Test complex types -->
+            <s:complexType name="complexAll">
+                <s:all>
+                    <s:element name="firstname" type="s:string"/>
+                    <s:element name="lastname" type="s:string"/>
+                </s:all>
+            </s:complexType>
+
+            <s:complexType name="complexChoice">
+                <s:choice>
+                    <s:element name="firstname" type="s:string"/>
+                    <s:element name="lastname" type="s:string"/>
+                </s:choice>
+            </s:complexType>
+            <s:complexType name="complexChoice">
+                <s:choice>
+                    <s:element name="firstname" type="s:string"/>
+                    <s:element name="lastname" type="s:string"/>
+                </s:choice>
+            </s:complexType>
+            <!-- end -->
+
+            <!-- Complex content test cases-->
+            <s:element name="employee" type="fullpersoninfo"/>
+
+            <s:complexType name="personinfo">
+                <s:sequence>
+                    <s:element name="firstname" type="s:string"/>
+                    <s:element name="lastname" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+
+            <s:complexType name="fullpersoninfo1">
+                <s:complexContent>
+                    <s:extension base="personinfo">
+                        <s:group ref="custGroup"/>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+
+            <s:complexType name="fullpersoninfo2">
+                <s:complexContent>
+                    <s:extension base="personinfo">
+                        <s:sequence>
+                            <s:element name="address" type="s:string"/>
+                            <s:element name="city" type="s:string"/>
+                            <s:element name="country" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+
+            <s:complexType name="fullpersoninfo3">
+                <s:complexContent>
+                    <s:extension base="personinfo">
+                        <s:all>
+                            <s:element name="address" type="s:string"/>
+                            <s:element name="city" type="s:string"/>
+                            <s:element name="country" type="s:string"/>
+                        </s:all>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+
+            <s:complexType name="fullpersoninfo4">
+                <s:complexContent>
+                    <s:extension base="personinfo">
+                        <s:choice>
+                            <s:sequence>
+                                <s:element name="address" type="s:string"/>
+                                <s:element name="city" type="s:string"/>
+                                <s:element name="country" type="s:string"/>
+                            </s:sequence>
+                        </s:choice>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+
+            <s:complexType name="fullpersoninfo5">
+                <s:complexContent>
+                    <s:extension base="personinfo">
+                        <s:attributeGroup ref="personattr"/>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+
+            <!-- With restrictions -->
+            <s:complexType name="customer">
+                <s:sequence>
+                    <s:element name="firstname" type="s:string"/>
+                    <s:element name="lastname" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+
+            <s:complexType name="Norwegian_customer1">
+                <s:complexContent>
+                    <s:restriction base="customer">
+                        <s:sequence>
+                            <s:element name="firstname" type="s:string"/>
+                            <s:element name="lastname" type="s:string"/>
+                            <s:element name="country" type="s:string" fixed="Norway"/>
+                        </s:sequence>
+                    </s:restriction>
+                </s:complexContent>
+            </s:complexType>
+
+            <s:complexType name="Norwegian_customer2">
+                <s:complexContent>
+                    <s:restriction base="customer">
+                        <s:group ref="custGroup"/>
+                    </s:restriction>
+                </s:complexContent>
+            </s:complexType>
+
+            <s:complexType name="Norwegian_customer3">
+                <s:complexContent>
+                    <s:restriction base="customer">
+                        <s:all>
+                            <s:element name="firstname" type="s:string"/>
+                            <s:element name="lastname" type="s:string"/>
+                            <s:element name="country" type="s:string" fixed="Norway"/>
+                        </s:all>
+                    </s:restriction>
+                </s:complexContent>
+            </s:complexType>
+
+            <s:complexType name="Norwegian_customer4">
+                <s:complexContent>
+                    <s:restriction base="customer">
+                        <s:choice>
+                            <s:sequence>
+                                <s:element name="firstname" type="s:string"/>
+                                <s:element name="lastname" type="s:string"/>
+                                <s:element name="country" type="s:string" fixed="Norway"/>
+                            </s:sequence>
+                        </s:choice>
+                    </s:restriction>
+                </s:complexContent>
+            </s:complexType>
+
+            <s:complexType name="Norwegian_customer5">
+                <s:complexContent>
+                    <s:restriction base="customer">
+                        <s:attributeGroup ref="personattr"/>
+                    </s:restriction>
+                </s:complexContent>
+            </s:complexType>
+
+            <s:complexType name="Norwegian_customer6">
+                <s:complexContent>
+                    <s:restriction base="customer">
+                        <s:attribute name="code">
+                            <s:simpleType>
+                                <s:restriction base="s:string">
+                                    <s:pattern value="[A-Z][A-Z]"/>
+                                </s:restriction>
+                            </s:simpleType>
+                        </s:attribute>
+                    </s:restriction>
+                </s:complexContent>
+            </s:complexType>
+            <!-- -->
+
+            <!-- To test Simple content-->
+            <s:element name="shoesize2">
+                <s:complexType>
+                    <s:simpleContent>
+                        <s:restriction base="s:string">
+                            <s:simpleType>
+                                <s:restriction base="s:string">
+                                    <s:pattern value="[A-Z][A-Z]"/>
+                                </s:restriction>
+                            </s:simpleType>
+                        </s:restriction>
+                    </s:simpleContent>
+                </s:complexType>
+            </s:element>
+            <!-- End -->
+
+            <!-- To test choice elemennt -->
+            <s:element name="personChoiceSequence">
+                <s:complexType>
+                    <s:choice>
+                        <s:sequence>
+                            <s:element name="employee" type="employee"/>
+                            <s:element name="member" type="member"/>
+                        </s:sequence>
+                    </s:choice>
+                </s:complexType>
+            </s:element>
+
+            <s:element name="personChoiceElement">
+                <s:complexType>
+                    <s:choice>
+                        <s:choice>
+                            <s:sequence>
+                                <s:element name="employee" type="employee"/>
+                                <s:element name="member" type="member"/>
+                            </s:sequence>
+                        </s:choice>
+                    </s:choice>
+                </s:complexType>
+            </s:element>
+
+            <s:element name="personChoiceGroup">
+                <s:complexType>
+                    <s:choice>
+                        <s:group ref="custGroup"/>
+                    </s:choice>
+                </s:complexType>
+            </s:element>
+
+
+            <!-- End of choice test -->
+
+            <!-- To test simpleContent attribute -->
+            <s:element name="shoesize">
+                <s:complexType>
+                    <s:simpleContent>
+                        <s:extension base="s:integer">
+                            <s:attribute name="country" type="s:string"/>
+                        </s:extension>
+                    </s:simpleContent>
+                </s:complexType>
+            </s:element>
+            <!-- end -->
+
+            <!-- Test inner elements with sub elements -->
+            <s:element name="testInnerElementsWithSubElements">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="input">
+                            <s:complexType>
+                                <s:sequence>
+                                    <s:element name="firstName" type="s:string"/>
+                                    <s:element name="lastName" type="s:string"/>
+                                </s:sequence>
+                            </s:complexType>
+                        </s:element>
+                        <s:element minOccurs="0" name="output">
+                            <s:complexType>
+                                <s:sequence>
+                                    <s:element maxOccurs="unbounded" minOccurs="0" name="itemList">
+                                        <s:complexType>
+                                            <s:sequence>
+                                                <s:element minOccurs="0" name="id" type="s:string"/>
+                                                <s:element minOccurs="0" name="name" type="s:string"/>
+                                            </s:sequence>
+                                        </s:complexType>
+                                    </s:element>
+                                </s:sequence>
+                            </s:complexType>
+                        </s:element>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <!-- end -->
+        </s:schema>
+    </wsdl:types>
+    <wsdl:message name="GetQuoteHttpPostIn">
+        <wsdl:part name="symbol" type="s:string">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetQuoteHttpPostOut">
+        <wsdl:part name="Body" element="tns:string">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetQuoteSoapOut">
+        <wsdl:part name="parameters" element="tns:GetQuoteResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetQuoteHttpGetOut">
+        <wsdl:part name="Body" element="tns:string">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetQuoteHttpGetIn">
+        <wsdl:part name="symbol" type="s:string">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetQuoteSoapIn">
+        <wsdl:part name="parameters" element="tns:GetQuote">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="StockQuoteHttpGet">
+        <wsdl:operation name="GetQuote">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Stock quote for a company Symbol
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetQuoteHttpGetIn">
+            </wsdl:input>
+            <wsdl:output message="tns:GetQuoteHttpGetOut">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="StockQuoteHttpPost">
+        <wsdl:operation name="GetQuote">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Stock quote for a company Symbol
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetQuoteHttpPostIn">
+            </wsdl:input>
+            <wsdl:output message="tns:GetQuoteHttpPostOut">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="StockQuoteSoap">
+        <wsdl:operation name="GetQuote">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Stock quote for a company Symbol
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetQuoteSoapIn">
+            </wsdl:input>
+            <wsdl:output message="tns:GetQuoteSoapOut">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="StockQuoteHttpGet" type="tns:StockQuoteHttpGet">
+        <http:binding verb="GET"/>
+        <wsdl:operation name="GetQuote">
+            <http:operation location="/GetQuote"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="StockQuoteHttpPost" type="tns:StockQuoteHttpPost">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="GetQuote">
+            <http:operation location="/GetQuote"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="StockQuoteSoap" type="tns:StockQuoteSoap">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetQuote">
+            <soap:operation soapAction="http://www.webserviceX.NET/GetQuote" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="StockQuoteSoap12" type="tns:StockQuoteSoap">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetQuote">
+            <soap12:operation soapAction="http://www.webserviceX.NET/GetQuote" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="StockQuote">
+        <wsdl:port name="StockQuoteHttpPost" binding="tns:StockQuoteHttpPost">
+            <http:address location="http://www.webservicex.net/stockquote.asmx"/>
+        </wsdl:port>
+        <wsdl:port name="StockQuoteSoap" binding="tns:StockQuoteSoap">
+            <soap:address location="http://www.webservicex.net/stockquote.asmx"/>
+        </wsdl:port>
+        <wsdl:port name="StockQuoteHttpGet" binding="tns:StockQuoteHttpGet">
+            <http:address location="http://www.webservicex.net/stockquote.asmx"/>
+        </wsdl:port>
+        <wsdl:port name="StockQuoteSoap12" binding="tns:StockQuoteSoap12">
+            <soap12:address location="http://www.webservicex.net/stockquote.asmx"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
