@@ -17,11 +17,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.wso2.carbon.governance-extensions</groupId>
+        <artifactId>governance-extensions</artifactId>
+        <version>4.4.13-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>soap.viewer</groupId>
-    <artifactId>org.wso2.carbon.greg.soap.viewer</artifactId>
-    <version>1.0.0</version>
+    <artifactId>org.wso2.carbon.governance.soap.viewer</artifactId>
     <packaging>bundle</packaging>
 
     <dependencies>
@@ -133,7 +137,6 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
-                        <Bundle-Version>1.0.0</Bundle-Version>
                         <Private-Package></Private-Package>
                         <Import-Package>
                             org.ow2.easywsdl.wsdl.*;version="[2.1.0, 3.0.0)",

@@ -25,15 +25,16 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>org.wso2.carbon.greg.soap.viewer.feature</artifactId>
+    <artifactId>org.wso2.carbon.governance.soap.viewer.feature</artifactId>
     <packaging>pom</packaging>
     <name>WSO2 Carbon - WSDL Viewer Feature</name>
     <url>http://wso2.org</url>
 
     <dependencies>
         <dependency>
-            <groupId>soap.viewer</groupId>
-            <artifactId>org.wso2.carbon.greg.soap.viewer</artifactId>
+            <groupId>org.wso2.carbon.governance-extensions</groupId>
+            <artifactId>org.wso2.carbon.governance.soap.viewer</artifactId>
+            <version>${carbon.governance.ext.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sun.xml.bind.wso2</groupId>
@@ -61,7 +62,7 @@
                             <goal>p2-feature-gen</goal>
                         </goals>
                         <configuration>
-                            <id>org.wso2.carbon.greg.soap.viewer</id>
+                            <id>org.wso2.carbon.governance.soap.viewer</id>
                             <propertiesFile>../../etc/feature.properties</propertiesFile>
                             <adviceFile>
                                 <properties>
@@ -69,7 +70,7 @@
                                 </properties>
                             </adviceFile>
                             <bundles>
-                                <bundleDef>soap.viewer:org.wso2.carbon.greg.soap.viewer</bundleDef>
+                                <bundleDef>org.wso2.carbon.governance-extensions:org.wso2.carbon.governance.soap.viewer</bundleDef>
                                 <bundleDef>org.wso2.orbit.org.ow2.easywsdl:easywsdl-all</bundleDef>
                                 <bundleDef>com.sun.xml.bind.wso2:jaxb:2.2.5.wso2v1</bundleDef>
                             </bundles>
