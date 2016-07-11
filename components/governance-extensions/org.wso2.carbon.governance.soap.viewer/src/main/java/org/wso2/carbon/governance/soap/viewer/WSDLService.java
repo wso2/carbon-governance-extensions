@@ -16,26 +16,27 @@
  * under the License.
  */
 
-package org.wso2.carbon.greg.soap.viewer;
+package org.wso2.carbon.governance.soap.viewer;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 /**
- *  This class is a representation of WSDL elements. Each elements should have a name and a type. If the type is a
- *  complex type then there will be a list of sub elements.
+ * This class is a representation of WSDL services.
  */
-public class WSDLElement {
+public class WSDLService {
 
     private String name;
 
-    private String type;
+    private List<WSDLOperation> operations;
 
-    private List<WSDLElement> subElements = new ArrayList<WSDLElement>();
-
-    public WSDLElement(String name, String type) {
+    public WSDLService(String name, List<WSDLOperation> operations) {
         this.name = name;
-        this.type = type;
+        this.operations = operations;
+    }
+
+    public WSDLService(){
+
     }
 
     public String getName() {
@@ -46,19 +47,11 @@ public class WSDLElement {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public List<WSDLOperation> getOperations() {
+        return operations;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public List<WSDLElement> getSubElements() {
-        return subElements;
-    }
-
-    public void setSubElements(List<WSDLElement> subElements) {
-        this.subElements = subElements;
+    public void setOperations(List<WSDLOperation> operations) {
+        this.operations = operations;
     }
 }

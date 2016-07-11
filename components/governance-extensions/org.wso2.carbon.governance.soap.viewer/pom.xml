@@ -144,7 +144,7 @@
                             *;resolution:=optional
                         </Import-Package>
                         <Export-Package>
-                            org.wso2.carbon.greg.soap.viewer.*
+                            org.wso2.carbon.governance.soap.viewer.*
                         </Export-Package>
                         <Include-Resource>
                             OSGI-INF/serviceComponents.xml=target/scr-plugin-generated/OSGI-INF/serviceComponents.xml

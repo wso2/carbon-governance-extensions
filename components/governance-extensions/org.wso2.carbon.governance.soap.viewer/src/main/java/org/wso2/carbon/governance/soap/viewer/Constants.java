@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.carbon.greg.soap.viewer;
+package org.wso2.carbon.governance.soap.viewer;
 
 /**
  * This class contains constants of the soap viewer package

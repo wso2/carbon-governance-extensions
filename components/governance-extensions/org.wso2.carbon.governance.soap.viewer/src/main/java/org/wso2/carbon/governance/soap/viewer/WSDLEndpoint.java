@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.carbon.greg.soap.viewer;
+package org.wso2.carbon.governance.soap.viewer;
 
 /**
  * This class represents the endpoints of a WSDL file.

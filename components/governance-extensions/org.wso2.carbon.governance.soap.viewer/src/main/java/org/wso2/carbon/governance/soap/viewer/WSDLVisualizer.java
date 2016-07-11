@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.carbon.greg.soap.viewer;
+package org.wso2.carbon.governance.soap.viewer;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
