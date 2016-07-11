@@ -39,6 +39,7 @@
         <module>components/governance-extensions</module>
         <module>features/platform-extensions</module>
         <module>features/governance-comparator</module>
+      	<module>features/wsdl-viewer</module>
     </modules>
     <build>
         <pluginManagement>
@@ -580,6 +581,11 @@
                 <artifactId>org.wso2.carbon.governance.platform.extensions</artifactId>
                 <version>${carbon.governance.ext.version}</version>
             </dependency>
+		<dependency>
+                <groupId>soap.viewer</groupId>
+                <artifactId>org.wso2.carbon.greg.soap.viewer</artifactId>
+                <version>1.0.0</version>
+            </dependency>
             <dependency>
                 <groupId>org.wso2.carbon.registry</groupId>
                 <artifactId>org.wso2.carbon.registry.extensions.ui</artifactId>
@@ -737,6 +743,7 @@
                 <artifactId>org.wso2.carbon.governance.comparator</artifactId>
                 <version>${carbon.governance.version}</version>
             </dependency>
+	  
             <dependency>
                 <groupId>org.wso2.carbon.mediation</groupId>
                 <artifactId>org.wso2.carbon.mediation.configadmin.stub</artifactId>
@@ -1048,16 +1055,16 @@
 
     <properties>
         <!-- Carbon kernel version -->
-        <carbon.kernel.version>4.4.5</carbon.kernel.version>
+        <carbon.kernel.version>4.4.7</carbon.kernel.version>
         <carbon.kernel.imp.pkg.version>[4.4.0, 4.5.0)</carbon.kernel.imp.pkg.version>
         <carbon.kernel.registry.imp.pkg.version>[1.0.1, 2.0.0)</carbon.kernel.registry.imp.pkg.version>
 
         <!-- Carbon Commons -->
-        <carbon.commons.version>4.5.2</carbon.commons.version>
+        <carbon.commons.version>4.5.4</carbon.commons.version>
         <carbon.commons.imp.pkg.version>[4.4.0, 5.0.0)</carbon.commons.imp.pkg.version>
 
         <!-- Carbon Registry -->
-        <carbon.registry.version>4.5.5-SNAPSHOT</carbon.registry.version>
+        <carbon.registry.version>4.5.6-SNAPSHOT</carbon.registry.version>
         <carbon.registry.imp.pkg.version>[4.5.0, 5.0.0)</carbon.registry.imp.pkg.version>
 
         <!-- Carbon Governance version comes here-->
