@@ -581,10 +581,10 @@
                 <artifactId>org.wso2.carbon.governance.platform.extensions</artifactId>
                 <version>${carbon.governance.ext.version}</version>
             </dependency>
-		<dependency>
-                <groupId>soap.viewer</groupId>
-                <artifactId>org.wso2.carbon.greg.soap.viewer</artifactId>
-                <version>1.0.0</version>
+            <dependency>
+                <groupId>org.wso2.carbon.governance-extensions</groupId>
+                <artifactId>org.wso2.carbon.governance.soap.viewer</artifactId>
+                <version>${carbon.governance.ext.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.wso2.carbon.registry</groupId>
