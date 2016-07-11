@@ -16,18 +16,18 @@
  * under the License.
  */
 
-package org.wso2.carbon.greg.soap.viewer;
+package org.wso2.carbon.governance.soap.viewer;
 
 import java.util.List;
 
 /**
- * This class is a representation of fault message in a WSDL file.
+ * This is an implementation of output message in a WSDL file.
  */
-public class FaultMessage implements Message {
+public class OutputMessage implements Message {
 
     private List<MessagePart> messageParts;
 
-    public FaultMessage(List<MessagePart> messageParts) {
+    public OutputMessage(List<MessagePart> messageParts) {
         this.messageParts = messageParts;
     }
 
@@ -39,4 +39,3 @@ public class FaultMessage implements Message {
         return messageParts;
     }
 }
-

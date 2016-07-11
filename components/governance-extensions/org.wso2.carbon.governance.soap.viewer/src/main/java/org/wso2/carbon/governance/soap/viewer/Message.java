@@ -16,31 +16,16 @@
  * under the License.
  */
 
-package org.wso2.carbon.greg.soap.viewer;
+package org.wso2.carbon.governance.soap.viewer;
 
 import java.util.List;
 
 /**
- * This class is an implementation of Message class. This class represents the input messages in a wsdl file.
+ * This is an interface to represent messages in a WSDL file
  */
-public class InputMessage implements Message{
+public interface Message {
 
-    private List<MessagePart> messageParts;
+    public void setMessageParts(List<MessagePart> messageParts);
 
-    public InputMessage() {
-
-    }
-
-    public InputMessage(List<MessagePart> messageParts) {
-        this.messageParts = messageParts;
-    }
-
-
-    public List<MessagePart> getMessageParts() {
-        return messageParts;
-    }
-
-    public void setMessageParts(List<MessagePart> messageParts) {
-        this.messageParts = messageParts;
-    }
+    public List<MessagePart> getMessageParts();
 }
