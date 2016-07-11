@@ -77,8 +77,6 @@ import org.wso2.carbon.registry.resource.beans.ContentDownloadBean;
 import org.wso2.carbon.registry.resource.services.utils.ContentUtil;
 import org.wso2.carbon.utils.CarbonUtils;
 
-import javax.xml.bind.JAXBElement;
-import javax.xml.namespace.QName;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -97,6 +95,8 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+import javax.xml.bind.JAXBElement;
+import javax.xml.namespace.QName;
 
 
 /**
@@ -327,12 +327,10 @@ public class WSDLVisualizer {
                         FaultMessage faultMessage;
                         if ((operation.getFaults() == null) || operation.getFaults().isEmpty()) {
                             List<MessagePart> messageParts = new ArrayList<>();
-                            messageParts.add(new MessagePart(Constants.UNDEFINED_TYPE, Constants.UNDEFINED_TYPE));
                             faultMessage = new FaultMessage(messageParts);
                         } else {
                             Fault fault = operation.getFaults().get(0);
                             faultMessage = new FaultMessage(getMessageParts(fault.getMessageName().toString()));
-
                         }
 
                         MessageGroup message = new MessageGroup(inputMessage, outputMessage, faultMessage);

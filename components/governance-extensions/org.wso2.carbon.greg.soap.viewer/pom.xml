@@ -25,67 +25,44 @@
     <packaging>bundle</packaging>
 
     <dependencies>
-        <!--Easy-WSDL dependency -->
         <dependency>
-            <groupId>org.ow2.easywsdl</groupId>
-            <artifactId>easywsdl-wsdl</artifactId>
-            <version>2.1</version>
+            <groupId>com.sun.xml.bind.wso2</groupId>
+            <artifactId>jaxb</artifactId>
+            <version>2.2.5.wso2v1</version>
         </dependency>
-        <dependency>
-            <groupId>org.ow2.easywsdl</groupId>
-            <artifactId>easywsdl-schema</artifactId>
-            <version>2.1</version>
-        </dependency>
-
         <dependency>
             <groupId>org.jvnet.jaxb2_commons</groupId>
             <artifactId>runtime</artifactId>
             <version>0.4.1.5</version>
         </dependency>
-
-        <!-- http://mvnrepository.com/artifact/commons-lang/commons-lang -->
+        <!--Easy-WSDL dependency -->
         <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>2.1</version>
+            <groupId>org.wso2.orbit.org.ow2.easywsdl</groupId>
+            <artifactId>easywsdl-all</artifactId>
+            <version>${org.wso2.orbit.org.ow2.easywsdl.version}</version>
         </dependency>
-
-        <!-- http://mvnrepository.com/artifact/org.jvnet.jaxb2_commons/jaxb2-commons-lang -->
+        <!--End of Easy WSDL dependency -->
         <dependency>
             <groupId>org.jvnet.jaxb2_commons</groupId>
             <artifactId>jaxb2-commons-lang</artifactId>
             <version>2.3</version>
         </dependency>
-
-        <!-- http://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl -->
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>2.0.1</version>
-        </dependency>
-
-        <!--End of Easy WSDL dependency -->
-
         <!-- Gson dependency-->
-
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.6.2</version>
+            <version>${com.google.code.gson.version}</version>
         </dependency>
-
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.wso2.eclipse.osgi</groupId>
             <artifactId>org.eclipse.osgi.services</artifactId>
             <version>${equinox.osgi.services.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.felix</groupId>
             <artifactId>org.osgi.core</artifactId>
@@ -97,7 +74,6 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
-
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.registry.core</artifactId>
@@ -118,8 +94,9 @@
         <osgi.api.version>6.0.0</osgi.api.version>
         <log4j.version>1.2.16</log4j.version>
         <carbon.kernel.version>4.4.5</carbon.kernel.version>
-        <carbon.registry.resource.version>4.5.5-SNAPSHOT</carbon.registry.resource.version>
-
+        <carbon.registry.resource.version>4.5.5</carbon.registry.resource.version>
+        <com.google.code.gson.version>2.6.2</com.google.code.gson.version>
+        <org.wso2.orbit.org.ow2.easywsdl.version>2.1.0.wso2v1</org.wso2.orbit.org.ow2.easywsdl.version>
     </properties>
     <build>
         <plugins>
@@ -127,7 +104,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>3.2</version>
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>
@@ -150,33 +127,24 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>2.3.5</version>
+                <version>2.4.0</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Bundle-Version>1.0.0</Bundle-Version>
-                        <Private-Package>org.wso2.carbon.greg.soap.viewer</Private-Package>
-                        <Bundle-Activator>org.wso2.carbon.greg.soap.viewer.Activator</Bundle-Activator>
-                        <!--<Service-Component>-->
-                            <!--OSGI-INF/serviceComponents.xml-->
-                        <!--</Service-Component>-->
+                        <Private-Package></Private-Package>
                         <Import-Package>
-                           <!-- org.osgi.framework,
-                            org.ow2.easywsdl.wsdl.*,
-                            org.apache.commons.lang.*,-->
+                            org.ow2.easywsdl.wsdl.*;version="[2.1.0, 3.0.0)",
+                            org.ow2.easywsdl.schema.*;version="[2.1.0, 3.0.0)",
                             *;resolution:=optional
                         </Import-Package>
                         <Export-Package>
-                            org.ow2.easywsdl.wsdl.*,
-                            org.ow2.easywsdl.schema.*,org.wso2.carbon.greg.soap.viewer.*,org.jvnet.jaxb2_commons.*,com.sun.xml.bind.marshaller.*
+                            org.wso2.carbon.greg.soap.viewer.*
                         </Export-Package>
                         <Include-Resource>
-                            OSGI-INF/serviceComponents.xml=target/scr-plugin-generated/OSGI-INF/serviceComponents.xml,
-                            @easywsdl-wsdl-2.1.jar!/schema/**,
-                            @easywsdl-schema-2.1.jar!/schema/**
-
+                            OSGI-INF/serviceComponents.xml=target/scr-plugin-generated/OSGI-INF/serviceComponents.xml
                         </Include-Resource>
                         <DynamicImport-Package>*</DynamicImport-Package>
                     </instructions>
@@ -238,6 +206,5 @@
                 <enabled>false</enabled>
             </releases>
         </repository>
-
     </repositories>
 </project>

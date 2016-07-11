@@ -35,6 +35,16 @@
             <groupId>soap.viewer</groupId>
             <artifactId>org.wso2.carbon.greg.soap.viewer</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind.wso2</groupId>
+            <artifactId>jaxb</artifactId>
+            <version>2.2.5.wso2v1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.orbit.org.ow2.easywsdl</groupId>
+            <artifactId>easywsdl-all</artifactId>
+            <version>2.1.0.wso2v1</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -60,6 +70,8 @@
                             </adviceFile>
                             <bundles>
                                 <bundleDef>soap.viewer:org.wso2.carbon.greg.soap.viewer</bundleDef>
+                                <bundleDef>org.wso2.orbit.org.ow2.easywsdl:easywsdl-all</bundleDef>
+                                <bundleDef>com.sun.xml.bind.wso2:jaxb:2.2.5.wso2v1</bundleDef>
                             </bundles>
                             <importFeatures>
                                 <importFeatureDef>org.wso2.carbon.registry.core.server:${carbon.registry.version}</importFeatureDef>

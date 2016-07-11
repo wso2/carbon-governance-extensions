@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -77,8 +78,9 @@ public class WSDLVisualizerServicesTest {
                 assertEquals("string", output.getMessageParts().get(0).getType());
 
                 FaultMessage fault = messageGroup.getFault();
-                assertEquals("undefined", fault.getMessageParts().get(0).getName());
-                assertEquals("undefined", fault.getMessageParts().get(0).getType());
+                List<MessagePart> emptyMessageParts = new ArrayList<>();
+                assertEquals(emptyMessageParts, fault.getMessageParts());
+                assertEquals(emptyMessageParts, fault.getMessageParts());
 
             }else if (endpoint.getBinding().equals("StockQuoteSoap")) {
                 endpointFound = endpointFound + 1;
@@ -98,8 +100,9 @@ public class WSDLVisualizerServicesTest {
 
 
                 FaultMessage fault = messageGroup.getFault();
-                assertEquals("undefined", fault.getMessageParts().get(0).getName());
-                assertEquals("undefined", fault.getMessageParts().get(0).getType());
+                List<MessagePart> emptyMessageParts = new ArrayList<>();
+                assertEquals(emptyMessageParts, fault.getMessageParts());
+                assertEquals(emptyMessageParts, fault.getMessageParts());
 
             }else if (endpoint.getBinding().equals("StockQuoteHttpGet")) {
                 endpointFound = endpointFound + 1;
@@ -116,8 +119,9 @@ public class WSDLVisualizerServicesTest {
                 assertEquals("string", output.getMessageParts().get(0).getType());
 
                 FaultMessage fault = messageGroup.getFault();
-                assertEquals("undefined", fault.getMessageParts().get(0).getName());
-                assertEquals("undefined", fault.getMessageParts().get(0).getType());
+                List<MessagePart> emptyMessageParts = new ArrayList<>();
+                assertEquals(emptyMessageParts, fault.getMessageParts());
+                assertEquals(emptyMessageParts, fault.getMessageParts());
 
             }else if (endpoint.getBinding().equals("StockQuoteSoap12")) {
                 endpointFound = endpointFound + 1;
@@ -137,8 +141,9 @@ public class WSDLVisualizerServicesTest {
 
 
                 FaultMessage fault = messageGroup.getFault();
-                assertEquals("undefined", fault.getMessageParts().get(0).getName());
-                assertEquals("undefined", fault.getMessageParts().get(0).getType());
+                List<MessagePart> emptyMessageParts = new ArrayList<>();
+                assertEquals(emptyMessageParts, fault.getMessageParts());
+                assertEquals(emptyMessageParts, fault.getMessageParts());
             }
         }
 
