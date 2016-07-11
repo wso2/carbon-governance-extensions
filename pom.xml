@@ -39,6 +39,7 @@
         <module>components/governance-extensions</module>
         <module>features/platform-extensions</module>
         <module>features/governance-comparator</module>
+      	<module>features/wsdl-viewer</module>
     </modules>
     <build>
         <pluginManagement>
@@ -580,6 +581,11 @@
                 <artifactId>org.wso2.carbon.governance.platform.extensions</artifactId>
                 <version>${carbon.governance.ext.version}</version>
             </dependency>
+		<dependency>
+                <groupId>soap.viewer</groupId>
+                <artifactId>org.wso2.carbon.greg.soap.viewer</artifactId>
+                <version>1.0.0</version>
+            </dependency>
             <dependency>
                 <groupId>org.wso2.carbon.registry</groupId>
                 <artifactId>org.wso2.carbon.registry.extensions.ui</artifactId>
@@ -737,6 +743,7 @@
                 <artifactId>org.wso2.carbon.governance.comparator</artifactId>
                 <version>${carbon.governance.version}</version>
             </dependency>
+	  
             <dependency>
                 <groupId>org.wso2.carbon.mediation</groupId>
                 <artifactId>org.wso2.carbon.mediation.configadmin.stub</artifactId>
