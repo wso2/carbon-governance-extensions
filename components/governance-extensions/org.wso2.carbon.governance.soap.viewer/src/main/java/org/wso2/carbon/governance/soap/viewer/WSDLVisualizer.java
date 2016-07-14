@@ -309,7 +309,6 @@ public class WSDLVisualizer {
                             inputMessage = new InputMessage(getMessageParts(input.getMessageName().toString()));
                         } else {
                             List<MessagePart> messageParts = new ArrayList<>();
-                            messageParts.add(new MessagePart(Constants.UNDEFINED_TYPE, Constants.UNDEFINED_TYPE));
                             inputMessage = new InputMessage(messageParts);
                         }
                         Output output = operation.getOutput();
@@ -319,7 +318,6 @@ public class WSDLVisualizer {
                             outputMessage = new OutputMessage(getMessageParts(output.getMessageName().toString()));
                         } else {
                             List<MessagePart> messageParts = new ArrayList<>();
-                            messageParts.add(new MessagePart(Constants.UNDEFINED_TYPE, Constants.UNDEFINED_TYPE));
                             outputMessage = new OutputMessage(messageParts);
                         }
                         //handle if fault message is not defined
