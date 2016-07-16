@@ -56,6 +56,7 @@ public class Constants {
     public static final String ATTRIBUTE_TYPE = "attribute";
     public static final String ATTRIBUTE_GROUP_TYPE = "attribute_group";
     public static final String COMPLEX_TYPE = "complex_type";
+    public static final String EMPTY_TYPE = "empty";
 
 
 

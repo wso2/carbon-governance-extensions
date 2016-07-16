@@ -303,10 +303,16 @@ public class WSDLVisualizer {
                             currentOperationIndex = operationIndex;
                         }
                         Input input = operation.getInput();
+
                         InputMessage inputMessage;
                         //handle if input is not defined
                         if (input != null) {
-                            inputMessage = new InputMessage(getMessageParts(input.getMessageName().toString()));
+                            if (input.getParts().isEmpty()) {
+                                //when message parts are empty, give operation name as the input name
+                                inputMessage = new InputMessage(getMessageParts(operationName));
+                            } else {
+                                inputMessage = new InputMessage(getMessageParts(input.getMessageName().toString()));
+                            }
                         } else {
                             List<MessagePart> messageParts = new ArrayList<>();
                             inputMessage = new InputMessage(messageParts);
@@ -396,7 +402,7 @@ public class WSDLVisualizer {
             }
         }
         if (messageParts.isEmpty()) {
-            MessagePart messagePart = new MessagePart(Constants.UNDEFINED_TYPE, Constants.UNDEFINED_TYPE);
+            MessagePart messagePart = new MessagePart(messageName, Constants.EMPTY_TYPE);
             messageParts.add(messagePart);
         }
         return messageParts;
