@@ -69,6 +69,7 @@ import org.ow2.easywsdl.wsdl.api.Service;
 import org.ow2.easywsdl.wsdl.api.Types;
 import org.ow2.easywsdl.wsdl.api.WSDLReader;
 import org.ow2.easywsdl.wsdl.impl.wsdl11.MessageImpl;
+import org.wso2.carbon.context.PrivilegedCarbonContext;
 import org.wso2.carbon.registry.core.Registry;
 import org.wso2.carbon.registry.core.exceptions.RegistryException;
 import org.wso2.carbon.registry.core.service.RegistryService;
@@ -131,12 +132,14 @@ public class WSDLVisualizer {
     public WSDLVisualizer() {
     }
 
-    public WSDLVisualizer(String pathToWSDL) {
+    public WSDLVisualizer(String pathToWSDL,int tenantId) {
 
         String outdir = null;
         try {
+            PrivilegedCarbonContext.startTenantFlow();
+            PrivilegedCarbonContext.getThreadLocalCarbonContext().setTenantId(tenantId, true);
             //Get the location of the temp direcoty where wsdl file is saved.
-            outdir = writeResourceToFile(pathToWSDL);
+            outdir = writeResourceToFile(pathToWSDL,tenantId);
             //Get the name of the WSDL file
             String[] list = pathToWSDL.split("/");
             String fileName = list[list.length - 1];
@@ -159,6 +162,7 @@ public class WSDLVisualizer {
         } catch (SchemaException e) {
             logger.error("Error occurred while resolving schema types ", e);
         } finally {
+            PrivilegedCarbonContext.endTenantFlow();
             //Delete the temp folder created
             if (outdir != null) {
                 FileUtils.deleteQuietly(new File(outdir));
@@ -172,11 +176,11 @@ public class WSDLVisualizer {
      * @param path Registry path the the WSDL file
      * @return Output directory path
      */
-    private String writeResourceToFile(String path) {
+    private String writeResourceToFile(String path, int tenantId) {
         String outDir = null;
         try {
-            Registry registry = ServiceHolder.getRegistryService().getSystemRegistry();
-            ContentDownloadBean zipContentBean = ContentUtil.getContentWithDependencies(path, (UserRegistry) registry);
+            UserRegistry registry = ServiceHolder.getRegistryService().getSystemRegistry(tenantId);
+            ContentDownloadBean zipContentBean = ContentUtil.getContentWithDependencies(path, registry);
             InputStream zipContentStream = zipContentBean.getContent().getInputStream();
             ZipInputStream stream = new ZipInputStream(zipContentStream);
             byte[] buffer = new byte[2048];
