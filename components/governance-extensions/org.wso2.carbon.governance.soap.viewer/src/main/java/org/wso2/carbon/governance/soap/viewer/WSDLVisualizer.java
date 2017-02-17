@@ -70,7 +70,6 @@ import org.ow2.easywsdl.wsdl.api.Types;
 import org.ow2.easywsdl.wsdl.api.WSDLReader;
 import org.ow2.easywsdl.wsdl.impl.wsdl11.MessageImpl;
 import org.wso2.carbon.context.PrivilegedCarbonContext;
-import org.wso2.carbon.registry.core.Registry;
 import org.wso2.carbon.registry.core.exceptions.RegistryException;
 import org.wso2.carbon.registry.core.service.RegistryService;
 import org.wso2.carbon.registry.core.session.UserRegistry;
@@ -78,6 +77,8 @@ import org.wso2.carbon.registry.resource.beans.ContentDownloadBean;
 import org.wso2.carbon.registry.resource.services.utils.ContentUtil;
 import org.wso2.carbon.utils.CarbonUtils;
 
+import javax.xml.bind.JAXBElement;
+import javax.xml.namespace.QName;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -96,8 +97,6 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
-import javax.xml.bind.JAXBElement;
-import javax.xml.namespace.QName;
 
 
 /**
@@ -765,10 +764,12 @@ public class WSDLVisualizer {
                      <s:element name="order" type="ordertype"/>
                  */
             List<WSDLElement> wsdlElements = new ArrayList<>();
-            wsdlElements.add(new WSDLElement(Constants.COMPLEX_TYPE, getTypeWithNamespace(targetNamespace, elmImpl
-                    .getModel()
-                    .getType())));
-            listOfWSDLElements = wsdlElements;
+            if (elmImpl.getModel().getType() != null) {
+                wsdlElements.add(new WSDLElement(Constants.COMPLEX_TYPE, getTypeWithNamespace(targetNamespace, elmImpl
+                        .getModel()
+                        .getType())));
+                listOfWSDLElements = wsdlElements;
+            }
         }
         return listOfWSDLElements;
     }
@@ -1113,16 +1114,20 @@ public class WSDLVisualizer {
                                                                          + ".xmlschema.ExplicitGroup")) {
                         getElementsOfParticles(((ExplicitGroup) particle.getValue()).getParticle(), wsdlElementsList,
                                 targetNamespace);
-                    } else if (particle.getValue().getClass().toString().equals("class org.ow2.easywsdl.schema.org.w3"
-                                                                                + "._2001.xmlschema.LocalElement")) {
-
+                    } else if (particle.getValue().getClass().toString().equals
+                            ("class org.ow2.easywsdl.schema.org.w3._2001.xmlschema.LocalElement") &&
+                            ((LocalElement) particle.getValue()).getType() != null) {
                         WSDLElement wsdlElement = new WSDLElement(((LocalElement) particle.getValue()).getName(),
-                                getTypeWithNamespace(targetNamespace, ((LocalElement) particle.getValue()).getType()));
+                                                                  getTypeWithNamespace(targetNamespace,
+                                                                  ((LocalElement) particle.getValue()).getType()));
                         wsdlElementsList.add(wsdlElement);
-                    } else if (particle.getValue().getClass().toString().equals("class org.ow2.easywsdl.schema.org.w3"
-                                                                                + "._2001.xmlschema.GroupRef")) {
-                        WSDLElement wsdlElement = new WSDLElement(Constants.REFERENCE_TYPE, getTypeWithNamespace
-                                (targetNamespace, ((GroupRef) particle.getValue()).getRef()));
+
+                    } else if (particle.getValue().getClass().toString().equals
+                            ("class org.ow2.easywsdl.schema.org.w3._2001.xmlschema.GroupRef") &&
+                            ((GroupRef) particle.getValue()).getRef() != null) {
+                        WSDLElement wsdlElement = new WSDLElement(Constants.REFERENCE_TYPE,
+                                                                  getTypeWithNamespace(targetNamespace,
+                                                                  ((GroupRef) particle.getValue()).getRef()));
                         wsdlElementsList.add(wsdlElement);
                     } else if (particle.getValue().getClass().toString().equals("class org.ow2.easywsdl.schema.org.w3"
                                                                                 + "._2001.xmlschema.All")) {
