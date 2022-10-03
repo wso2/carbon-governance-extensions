@@ -168,7 +168,12 @@ public class RESTZipWSDLMediaTypeHandler extends ZipWSDLMediaTypeHandler {
                                 FileOutputStream os;
                                 File file = new File(tempFile.getAbsolutePath().substring(0,
                                         tempFile.getAbsolutePath().length() -
-                                                archiveExtension.length()) + File.separator + entryName);
+                                                archiveExtension.length()), entryName);
+                                if (!file.toPath().normalize().startsWith(tempFile.getAbsolutePath().substring(0,
+                                        tempFile.getAbsolutePath().length() -
+                                                archiveExtension.length()))) {
+                                    throw new IOException("Bad zip entry");
+                                }
                                 if (entry.isDirectory()) {
                                     if (!file.exists()) {
                                         makeDirs(file);
